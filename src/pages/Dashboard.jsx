@@ -1,5 +1,11 @@
+import { Layout } from "../components/Layout";
+
 const Dashboard = () => {
-  return <p>This is the Dashboard</p>;
+  return (
+    <Layout>
+      <p>This is the Dashboard</p>;
+    </Layout>
+  );
 };
 
 export { Dashboard };

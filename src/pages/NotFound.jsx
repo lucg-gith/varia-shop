@@ -1,5 +1,11 @@
+import { Layout } from "../components/Layout";
+
 const NotFound = () => {
-  return <p>This is the NotFound</p>;
+  return (
+    <Layout>
+      <p>This is the NotFound</p>;
+    </Layout>
+  );
 };
 
 export { NotFound };

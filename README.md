@@ -1,12 +1,26 @@
-# React + Vite
+Planificacion de como encarar el proyecto:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Nombre del proyecto: varia-shop
 
-Currently, two official plugins are available:
+posibles de paleta de colores:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+opc 1
+Azul Oscuro Principal: #0D2447 (Para fondos, barras de navegación)
+Rojo: #E63946 (Para botones, íconos)
+Gris para Texto: #4A4A4A (Para párrafos y texto general)
+Fondo Claro: #F1FAEE (Para el fondo principal de la página)
+Blanco: #FFFFFF (Para texto sobre fondos oscuros)
 
-## Expanding the ESLint configuration
+opc 2
+Azul Grisáceo: #6B7A8F (Color principal suave)
+Rojo Suave: #D9534F (Para notificaciones o alertas sutiles)
+Texto Principal: #333333 (Un negro no tan intenso)
+Fondo/Espacio en Blanco: #F7F7F7 (Un blanco ligeramente cálido)
+Detalles en Azul Claro: #A2B5CD (Para bordes o fondos secundarios)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Crear proeycto en React
+2. Crear Componentes
+3. Crear Views
+4. Crear Routes
+5. Manejar formularios
+6. Manejar contentextos
