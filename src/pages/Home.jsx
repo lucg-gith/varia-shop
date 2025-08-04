@@ -8,14 +8,24 @@ const Home = () => {
   // siempre que hay una funcion asincrona hay un await
   // decirle a react que muestre el return y despues cargue los productos - con effecto secundario - useEffect
   //#endregion
-  const [products, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const fetchingProducts = async () => {
     const response = await fetch("https://fakestoreapi.com/products", {
       method: "GET",
     });
     const data = await response.json();
-    setProduct(data);
+    setProducts(data);
+  };
+
+  const handleDelete = async (id) => {
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      setProducts(products.filter((product) => product.id !== id));
+    }
   };
 
   // NOTA: syntaxis useEffect(() => { aca va lo que se carga de forma secundaria}, [cuantas veces se ejecucuta, si esta vacio se ejecuta una sola vez])
@@ -35,6 +45,16 @@ const Home = () => {
           <p>${product.price}</p>
           <p>{product.description}</p>
           <p>{product.category}</p>
+          <div>
+            <button>Edit</button>
+            <button
+              onClick={() => {
+                handleDelete(product.id);
+              }}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </Layout>
