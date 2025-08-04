@@ -29,11 +29,12 @@ const Home = () => {
       <p>This is the Home</p>
 
       {/* TODO: fix this is not working- not showing on screen  */}
-      <div>
-        {products.map((product) => (
+      {products.map((product) => (
+        <div>
           <h2 key={product.id}>{product.title}</h2>
-        ))}
-      </div>
+          <p>{product.price}</p>
+        </div>
+      ))}
     </Layout>
   );
 };
