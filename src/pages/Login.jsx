@@ -1,6 +1,12 @@
 import { Layout } from "../components/Layout";
+import { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // nota al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
+
   return (
     <Layout>
       <form>

@@ -6,12 +6,15 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
+    setSuccess("");
 
     if (!username || !email || !password) {
-      alert("Completar campos");
+      setError("Completar todos los campos vacios por favor");
       return;
     }
 
@@ -22,6 +25,7 @@ const Register = () => {
     };
 
     console.log(newUser);
+    setSuccess("usuario registrado :)");
 
     setUsername("");
     setEmail("");
@@ -68,6 +72,9 @@ const Register = () => {
           <button type="submit">Register</button>
         </div>
       </form>
+
+      {error && <p>{error}</p>}
+      {success && <p>{success}</p>}
     </Layout>
   );
 };
