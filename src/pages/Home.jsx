@@ -21,6 +21,7 @@ const Home = () => {
     });
 
     const data = await response.json();
+
     setProducts(data);
   };
 

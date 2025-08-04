@@ -5,7 +5,11 @@ const Header = () => {
   return (
     <>
       <header>
-        <img src={logo} alt="Logo image" />
+        <img
+          src={logo}
+          alt="Logo image"
+          style={{ width: "150px", height: "auto" }}
+        />
         <nav>
           <ul>
             <li>
