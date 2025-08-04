@@ -10,10 +10,16 @@ const Home = () => {
   //#endregion
   const [products, setProducts] = useState([]);
 
+  // NOTA: syntaxis useEffect(() => { aca va lo que se carga de forma secundaria}, [cuantas veces se ejecucuta, si esta vacio se ejecuta una sola vez])
+  useEffect(() => {
+    fetchingProducts();
+  }, []);
+
   const fetchingProducts = async () => {
     const response = await fetch("https://fakestoreapi.com/products", {
       method: "GET",
     });
+
     const data = await response.json();
     setProducts(data);
   };
@@ -25,22 +31,17 @@ const Home = () => {
 
     if (response.ok) {
       setProducts(products.filter((product) => product.id !== id));
+      // fetchingProducts();
     }
   };
-
-  // NOTA: syntaxis useEffect(() => { aca va lo que se carga de forma secundaria}, [cuantas veces se ejecucuta, si esta vacio se ejecuta una sola vez])
-
-  useEffect(() => {
-    fetchingProducts();
-  }, []);
 
   return (
     <Layout>
       <p>This is the Home</p>
 
       {products.map((product) => (
-        <div>
-          <h2 key={product.id}>{product.title}</h2>
+        <div key={product.id}>
+          <h2>{product.title}</h2>
           <img src={product.image} alt="product image" />
           <p>${product.price}</p>
           <p>{product.description}</p>
@@ -62,3 +63,5 @@ const Home = () => {
 };
 
 export { Home };
+
+// TODO: se rompio no se vev en la pantalla los productos
