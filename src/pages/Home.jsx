@@ -27,10 +27,13 @@ const Home = () => {
   return (
     <Layout>
       <p>This is the Home</p>
-      <p>testing</p>
-      {products.map((product) => (
-        <h2>{product.title}</h2>
-      ))}
+
+      {/* TODO: fix this is not working- not showing on screen  */}
+      <div>
+        {products.map((product) => (
+          <h2 key={product.id}>{product.title}</h2>
+        ))}
+      </div>
     </Layout>
   );
 };
