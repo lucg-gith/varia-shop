@@ -8,12 +8,14 @@ const Dashboard = () => {
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
 
+  // NOTA: undefined: esperando resultado null: esta vacio
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
 
     if (description.length < 3) {
-      setError("La descripción debe tener al menos 4 caracteres");
+      setError("La descripcio'n debe tener al menos 4 caracteres");
       return;
     }
 
@@ -22,23 +24,28 @@ const Dashboard = () => {
       return;
     }
 
+    // NOTA: le agregamos ID para que tenga identificacion - aleatoreo - id: crypto.randomUUID() & category: "" & image: "" para que haga match con la info que trae la API.
+    // PREGUNTA: nose podria dejar solo name, price y description? sin poner name:name?
     const newProduct = {
       id: crypto.randomUUID(),
       title: name,
-      price,
-      description,
+      price: price,
+      description: description,
       category: "",
       image: "",
     };
 
+    // NOTA: petición al backend mediante fetch -> método POST https://fakeproductapi.com/products
     const response = await fetch("https://fakestoreapi.com/products", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(newProduct),
     });
 
     const data = await response.json();
-    setProduct(data);
+    setProduct(newProduct);
     setName("");
     setPrice("");
     setDescription("");
@@ -53,8 +60,8 @@ const Dashboard = () => {
             type="text"
             name="name"
             required
-            value={name}
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         </div>
 
@@ -64,8 +71,8 @@ const Dashboard = () => {
             type="number"
             name="price"
             required
-            value={price}
             onChange={(e) => setPrice(e.target.value)}
+            value={price}
           />
         </div>
 
@@ -75,13 +82,13 @@ const Dashboard = () => {
             name="description"
             rows="4"
             required
-            value={description}
             onChange={(e) => setDescription(e.target.value)}
+            value={description}
           />
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p>{error}</p>}
         </div>
 
-        <button>Guardar</button>
+        <button>save</button>
       </form>
 
       {product && (
