@@ -63,5 +63,3 @@ const Home = () => {
 };
 
 export { Home };
-
-// TODO: se rompio no se vev en la pantalla los productos
