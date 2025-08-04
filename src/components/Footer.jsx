@@ -2,6 +2,9 @@ const Footer = () => {
   return (
     <footer>
       <p>
+        ______________________________________________________________________
+      </p>
+      <p>
         Proyecto creado por
         {/* TODO STYLE: Add padding to the paragraph */}
         <a
