@@ -28,11 +28,13 @@ const Home = () => {
     <Layout>
       <p>This is the Home</p>
 
-      {/* TODO: fix this is not working- not showing on screen  */}
       {products.map((product) => (
         <div>
           <h2 key={product.id}>{product.title}</h2>
-          <p>{product.price}</p>
+          <img src={product.image} alt="product image" />
+          <p>${product.price}</p>
+          <p>{product.description}</p>
+          <p>{product.category}</p>
         </div>
       ))}
     </Layout>
