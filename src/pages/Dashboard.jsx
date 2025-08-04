@@ -8,14 +8,12 @@ const Dashboard = () => {
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
 
-  // NOTA: undefined: esperando resultado null: esta vacio
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
 
     if (description.length < 3) {
-      setError("La descripcio'n debe tener al menos 4 caracteres");
+      setError("La descripción debe tener al menos 4 caracteres");
       return;
     }
 
@@ -23,23 +21,19 @@ const Dashboard = () => {
       setError("El nombre debe tener al menos 4 caracteres");
       return;
     }
-    // NOTA: le agregamos ID para que tenga identificacion - aleatoreo - id: crypto.randomUUID() & category: "" & image: "" para que haga match con la info que trae la API.
-    // PREGUNTA: nose podria dejar solo name, price y description? sin poner name:name?
+
     const newProduct = {
       id: crypto.randomUUID(),
       title: name,
-      price: price,
-      description: description,
+      price,
+      description,
       category: "",
       image: "",
     };
 
-    // petición al backend mediante fetch -> método POST https://fakeproductapi.com/products
     const response = await fetch("https://fakestoreapi.com/products", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newProduct),
     });
 
@@ -52,8 +46,8 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <form>
-        <div onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <div>
           <label>Nombre del producto:</label>
           <input
             type="text"
@@ -69,8 +63,8 @@ const Dashboard = () => {
           <input
             type="number"
             name="price"
-            value={price}
             required
+            value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
@@ -84,9 +78,10 @@ const Dashboard = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          {error && <p>{error}</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
-        <button>save</button>
+
+        <button>Guardar</button>
       </form>
 
       {product && (
