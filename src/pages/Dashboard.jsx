@@ -35,7 +35,7 @@ const Dashboard = () => {
       image: "",
     };
 
-    // NOTA: petición al backend mediante fetch -> método POST https://fakeproductapi.com/products
+    // NOTA: petición al backend mediante fetch, el fetch siempre necesita un método -> método POST que significa = agregar -  https://fakeproductapi.com/products
     const response = await fetch("https://fakestoreapi.com/products", {
       method: "POST",
       headers: {
@@ -45,7 +45,9 @@ const Dashboard = () => {
     });
 
     const data = await response.json();
+
     setProduct(newProduct);
+
     setName("");
     setPrice("");
     setDescription("");
