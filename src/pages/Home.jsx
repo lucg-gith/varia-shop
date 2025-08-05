@@ -9,11 +9,14 @@ const Home = () => {
   // decirle a react que muestre el return y despues cargue los productos - con effecto secundario - useEffect
   //#endregion
   const [products, setProducts] = useState([]);
+  const [productToEdit, setProductToEdit] = useState(null);
 
   // NOTA: syntaxis useEffect(() => { aca va lo que se carga de forma secundaria}, [cuantas veces se ejecucuta, si esta vacio se ejecuta una sola vez])
   useEffect(() => {
     fetchingProducts();
   }, []);
+
+  // NOTA: Response es una respuesta tecnica de parte del la API, en forma de objeto.
 
   const fetchingProducts = async () => {
     const response = await fetch("https://fakestoreapi.com/products", {
@@ -30,16 +33,34 @@ const Home = () => {
       method: "DELETE",
     });
 
+    // NOTA: tenemos a disposicion el estado del producto, no se borra de la base de datos - simulacion de borrado en API - estamos usando API placeholder.
     if (response.ok) {
       setProducts(products.filter((product) => product.id !== id));
-      // fetchingProducts();
     }
   };
 
+  const handleOpenEdit = () => {
+    setProductToEdit;
+  };
   return (
     <Layout>
       <p>This is the Home</p>
 
+      {productToEdit && (
+        <section>
+          <h2>Editando el producto...</h2>
+          <button
+            onClick={() => {
+              setProductToEdit(null);
+            }}
+          >
+            Cerrar
+          </button>
+        </section>
+      )}
+
+      {/* NOTA: map me devuelve una array - mapear: a cada producto le genero un <div/>.  */}
+      {/* NOTA: hay que crear un switch para que aparezca o no el "editando prodcuto" */}
       {products.map((product) => (
         <div key={product.id}>
           <h2>{product.title}</h2>
@@ -48,7 +69,13 @@ const Home = () => {
           <p>{product.description}</p>
           <p>{product.category}</p>
           <div>
-            <button>Edit</button>
+            <button
+              onClick={() => {
+                handleOpenEdit;
+              }}
+            >
+              Edit
+            </button>
             <button
               onClick={() => {
                 handleDelete(product.id);
