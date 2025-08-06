@@ -10,6 +10,7 @@ const Home = () => {
   //#endregion
   const [products, setProducts] = useState([]);
   const [productToEdit, setProductToEdit] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(null);
 
   // NOTA: syntaxis useEffect(() => { aca va lo que se carga de forma secundaria}, [cuantas veces se ejecucuta, si esta vacio se ejecuta una sola vez])
   useEffect(() => {
@@ -24,7 +25,6 @@ const Home = () => {
     });
 
     const data = await response.json();
-
     setProducts(data);
   };
 
@@ -39,39 +39,69 @@ const Home = () => {
     }
   };
 
-  const handleOpenEdit = () => {
-    setProductToEdit;
+  const handleOpenEdit = (product) => {
+    setShowPopUp(true);
+    setProductToEdit(product);
+
+    console.log(product);
   };
   return (
     <Layout>
       <p>This is the Home</p>
 
-      {productToEdit && (
+      {showPopUp && (
         <section>
-          <h2>Editando el producto...</h2>
+          <form>
+            <div>
+              <label>Title</label>
+              <input type="text">Ingrese el titulo</input>
+            </div>
+            <div>
+              <label>Price</label>
+              <input type="number">Ingrese el precio</input>
+            </div>
+            <div>
+              <label>Description</label>
+              <textarea>Ingrese la descripcion</textarea>
+            </div>
+            <div>
+              {/* TODO: incorporar select */}
+              <label>Category</label>
+              <input type="text">Ingrese la categoria</input>
+            </div>
+            <div>
+              <label>image</label>
+              <input type="text">Ingrese la URL de la imagen</input>
+            </div>
+            <button>Update</button>
+          </form>
+
           <button
             onClick={() => {
               setProductToEdit(null);
             }}
           >
-            Cerrar
+            Cancelar
           </button>
         </section>
       )}
 
       {/* NOTA: map me devuelve una array - mapear: a cada producto le genero un <div/>.  */}
       {/* NOTA: hay que crear un switch para que aparezca o no el "editando prodcuto" */}
+
       {products.map((product) => (
         <div key={product.id}>
           <h2>{product.title}</h2>
           <img src={product.image} alt="product image" />
           <p>${product.price}</p>
+
           <p>{product.description}</p>
+
           <p>{product.category}</p>
           <div>
             <button
               onClick={() => {
-                handleOpenEdit;
+                handleOpenEdit(product);
               }}
             >
               Edit
