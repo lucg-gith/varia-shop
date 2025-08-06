@@ -11,6 +11,11 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [productToEdit, setProductToEdit] = useState(null);
   const [showPopUp, setShowPopUp] = useState(null);
+  const [titleEdit, setTitleEdit] = useState("");
+  const [priceEdit, setPriceEdit] = useState("");
+  const [descriptionEdit, setDescriptionEdit] = useState("");
+  const [categoryEdit, setCategoryEdit] = useState("");
+  const [imageEdit, setImageEdit] = useState("");
 
   // NOTA: syntaxis useEffect(() => { aca va lo que se carga de forma secundaria}, [cuantas veces se ejecucuta, si esta vacio se ejecuta una sola vez])
   useEffect(() => {
@@ -42,6 +47,11 @@ const Home = () => {
   const handleOpenEdit = (product) => {
     setShowPopUp(true);
     setProductToEdit(product);
+    setTitleEdit(product.title);
+    setPriceEdit(product.price);
+    setDescriptionEdit(product.description);
+    setCategoryEdit(product.category);
+    setImageEdit(product.image);
 
     console.log(product);
   };
@@ -54,31 +64,47 @@ const Home = () => {
           <form>
             <div>
               <label>Title</label>
-              <input type="text">Ingrese el titulo</input>
+              <input
+                type="text"
+                placeholder="Ingrese el titulo"
+                value={titleEdit}
+              ></input>
             </div>
             <div>
               <label>Price</label>
-              <input type="number">Ingrese el precio</input>
+              <input
+                type="number"
+                placeholder="Ingrese el precio"
+                value={priceEdit}
+              ></input>
             </div>
             <div>
               <label>Description</label>
-              <textarea>Ingrese la descripcion</textarea>
+              <textarea value={descriptionEdit}></textarea>
             </div>
             <div>
               {/* TODO: incorporar select */}
               <label>Category</label>
-              <input type="text">Ingrese la categoria</input>
+              <input
+                type="text"
+                placeholder="Ingrese la categoria"
+                value={categoryEdit}
+              ></input>
             </div>
             <div>
               <label>image</label>
-              <input type="text">Ingrese la URL de la imagen</input>
+              <input
+                type="text"
+                placeholder="Ingrese la URL de la imagen"
+                value={imageEdit}
+              ></input>
             </div>
-            <button>Update</button>
+            <button onClick={console.log("Update")}>Update</button>
           </form>
 
           <button
             onClick={() => {
-              setProductToEdit(null);
+              setShowPopUp(null);
             }}
           >
             Cancelar
