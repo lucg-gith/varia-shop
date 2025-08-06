@@ -78,6 +78,27 @@ const Home = () => {
           body: JSON.stringify(updatedProduct),
         }
       );
+
+      // NOTA: version previa del producto
+      if (response.ok) {
+        const data = await response.json();
+
+        setProducts((prevProduct) =>
+          prevProduct.map((product) =>
+            product.id === productToEdit.id ? data : product
+          )
+        );
+      }
+      // NOTA: cerramos el popup cuando se termina todo el prooceso
+      setShowPopUp(null);
+
+      //  if (response.ok) {
+      //    const data = await response.json();
+      //    // NOTA: find index es un bucle entonces hay que iterarlo
+      //    const Index = products.findIndex((product) => product.id === data.id);
+      //    setProducts((prevProduct) => prevProduct.splice(Index, data));
+      //  } seria para borrar -----------por el splice
+
       console.log("Producto actualizado:", updatedProduct);
     } catch (error) {
       console.error("Error:", error);
@@ -88,63 +109,65 @@ const Home = () => {
     <Layout>
       <p>This is the Home</p>
 
-      <section>
-        <form onSubmit={handleUpdate}>
-          <div>
-            <label>Title</label>
-            <input
-              type="text"
-              placeholder="Ingrese el titulo"
-              value={titleEdit}
-              onChange={(e) => setTitleEdit(e.target.value)}
-            ></input>
-          </div>
-          <div>
-            <label>Price</label>
-            <input
-              type="number"
-              placeholder="Ingrese el precio"
-              value={priceEdit}
-              onChange={(e) => setPriceEdit(e.target.value)}
-            ></input>
-          </div>
-          <div>
-            <label>Description</label>
-            <textarea
-              value={descriptionEdit}
-              onChange={(e) => setDescriptionEdit(e.target.value)}
-            ></textarea>
-          </div>
-          <div>
-            {/* TODO: incorporar select */}
-            <label>Category</label>
-            <input
-              type="text"
-              placeholder="Ingrese la categoria"
-              value={categoryEdit}
-              onChange={(e) => setCategoryEdit(e.target.value)}
-            ></input>
-          </div>
-          <div>
-            <label>image</label>
-            <input
-              type="text"
-              placeholder="Ingrese la URL de la imagen"
-              value={imageEdit}
-              onChange={(e) => setImageEdit(e.target.value)}
-            ></input>
-          </div>
-          <button>Update</button>
-        </form>
+      {showPopUp && (
+        <section>
+          <form onSubmit={handleUpdate}>
+            <div>
+              <label>Title</label>
+              <input
+                type="text"
+                placeholder="Ingrese el titulo"
+                value={titleEdit}
+                onChange={(e) => setTitleEdit(e.target.value)}
+              ></input>
+            </div>
+            <div>
+              <label>Price</label>
+              <input
+                type="number"
+                placeholder="Ingrese el precio"
+                value={priceEdit}
+                onChange={(e) => setPriceEdit(e.target.value)}
+              ></input>
+            </div>
+            <div>
+              <label>Description</label>
+              <textarea
+                value={descriptionEdit}
+                onChange={(e) => setDescriptionEdit(e.target.value)}
+              ></textarea>
+            </div>
+            <div>
+              {/* TODO: incorporar select */}
+              <label>Category</label>
+              <input
+                type="text"
+                placeholder="Ingrese la categoria"
+                value={categoryEdit}
+                onChange={(e) => setCategoryEdit(e.target.value)}
+              ></input>
+            </div>
+            <div>
+              <label>image</label>
+              <input
+                type="text"
+                placeholder="Ingrese la URL de la imagen"
+                value={imageEdit}
+                onChange={(e) => setImageEdit(e.target.value)}
+              ></input>
+            </div>
+            <button>Update</button>
+          </form>
 
-        <button
-          onClick={() => {
-            setShowPopUp(null);
-          }}
-        >
-          Cancelar
-        </button>
-      </section>
+          <button
+            onClick={() => {
+              setShowPopUp(null);
+            }}
+          >
+            Cancelar
+          </button>
+        </section>
+      )}
 
       {/* NOTA: map me devuelve una array - mapear: a cada producto le genero un <div/>.  */}
       {/* NOTA: hay que crear un switch para que aparezca o no el "editando prodcuto" */}
@@ -152,7 +175,11 @@ const Home = () => {
       {products.map((product) => (
         <div key={product.id}>
           <h2>{product.title}</h2>
-          <img src={product.image} alt="product image" />
+          <img
+            style={{ height: "20px", width: "20px" }}
+            src={product.image}
+            alt="product image"
+          />
           <p>${product.price}</p>
 
           <p>{product.description}</p>
