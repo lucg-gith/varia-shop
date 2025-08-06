@@ -52,65 +52,99 @@ const Home = () => {
     setDescriptionEdit(product.description);
     setCategoryEdit(product.category);
     setImageEdit(product.image);
-
-    console.log(product);
   };
+  const updatedProduct = {
+    title: titleEdit,
+    price: Number(priceEdit),
+    description: descriptionEdit,
+    category: categoryEdit,
+    image: imageEdit,
+  };
+
+  // NOTA: vamos a hacer una peticion mediante el fetch para modificar los datos del producto -> metodo PATCH(actualizacion parcial) o PUT(si queremos actualizar y no existe lo crea)
+  // la documentacion pide PUT
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `https://fakestoreapi.com/products/${productToEdit.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedProduct),
+        }
+      );
+      console.log("Producto actualizado:", updatedProduct);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <Layout>
       <p>This is the Home</p>
 
-      {showPopUp && (
-        <section>
-          <form>
-            <div>
-              <label>Title</label>
-              <input
-                type="text"
-                placeholder="Ingrese el titulo"
-                value={titleEdit}
-              ></input>
-            </div>
-            <div>
-              <label>Price</label>
-              <input
-                type="number"
-                placeholder="Ingrese el precio"
-                value={priceEdit}
-              ></input>
-            </div>
-            <div>
-              <label>Description</label>
-              <textarea value={descriptionEdit}></textarea>
-            </div>
-            <div>
-              {/* TODO: incorporar select */}
-              <label>Category</label>
-              <input
-                type="text"
-                placeholder="Ingrese la categoria"
-                value={categoryEdit}
-              ></input>
-            </div>
-            <div>
-              <label>image</label>
-              <input
-                type="text"
-                placeholder="Ingrese la URL de la imagen"
-                value={imageEdit}
-              ></input>
-            </div>
-            <button onClick={console.log("Update")}>Update</button>
-          </form>
+      <section>
+        <form onSubmit={handleUpdate}>
+          <div>
+            <label>Title</label>
+            <input
+              type="text"
+              placeholder="Ingrese el titulo"
+              value={titleEdit}
+              onChange={(e) => setTitleEdit(e.target.value)}
+            ></input>
+          </div>
+          <div>
+            <label>Price</label>
+            <input
+              type="number"
+              placeholder="Ingrese el precio"
+              value={priceEdit}
+              onChange={(e) => setPriceEdit(e.target.value)}
+            ></input>
+          </div>
+          <div>
+            <label>Description</label>
+            <textarea
+              value={descriptionEdit}
+              onChange={(e) => setDescriptionEdit(e.target.value)}
+            ></textarea>
+          </div>
+          <div>
+            {/* TODO: incorporar select */}
+            <label>Category</label>
+            <input
+              type="text"
+              placeholder="Ingrese la categoria"
+              value={categoryEdit}
+              onChange={(e) => setCategoryEdit(e.target.value)}
+            ></input>
+          </div>
+          <div>
+            <label>image</label>
+            <input
+              type="text"
+              placeholder="Ingrese la URL de la imagen"
+              value={imageEdit}
+              onChange={(e) => setImageEdit(e.target.value)}
+            ></input>
+          </div>
+          <button>Update</button>
+        </form>
 
-          <button
-            onClick={() => {
-              setShowPopUp(null);
-            }}
-          >
-            Cancelar
-          </button>
-        </section>
-      )}
+        <button
+          onClick={() => {
+            setShowPopUp(null);
+          }}
+        >
+          Cancelar
+        </button>
+      </section>
 
       {/* NOTA: map me devuelve una array - mapear: a cada producto le genero un <div/>.  */}
       {/* NOTA: hay que crear un switch para que aparezca o no el "editando prodcuto" */}
