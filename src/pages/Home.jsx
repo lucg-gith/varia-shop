@@ -1,8 +1,10 @@
 import { Layout } from "../components/Layout";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useAuth } from "../context/UserContext";
 
 const Home = () => {
+  const { user } = useAuth();
   //#region
   // NOTA: fetch herramienta nativa para hacer peticiones a la api - por defecto usa GET
   // siempre que hay una funcion asincrona hay un await
@@ -181,26 +183,27 @@ const Home = () => {
             alt="product image"
           />
           <p>${product.price}</p>
-
           <p>{product.description}</p>
-
           <p>{product.category}</p>
-          <div>
-            <button
-              onClick={() => {
-                handleOpenEdit(product);
-              }}
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => {
-                handleDelete(product.id);
-              }}
-            >
-              Delete
-            </button>
-          </div>
+
+          {user && (
+            <div>
+              <button
+                onClick={() => {
+                  handleOpenEdit(product);
+                }}
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => {
+                  handleDelete(product.id);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </div>
       ))}
     </Layout>
