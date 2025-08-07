@@ -1,9 +1,11 @@
 import { Layout } from "../components/Layout";
 import { useState } from "react";
+import { useAuth } from "../context/UserContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
   // nota al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
   const handleLogin = (e) => {
@@ -11,6 +13,7 @@ const Login = () => {
     //   onChange={(e) => setEmail(e.target.value)}
     // onChange={(e) => setPassword(e.target.value)}
     login();
+    console.log({ email, password });
   };
   return (
     <Layout>
