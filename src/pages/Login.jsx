@@ -6,10 +6,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   // nota al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
-
+  const handleLogin = (e) => {
+    e.preventDeFault;
+    login();
+  };
   return (
     <Layout>
-      <form>
+      <form onSubmit={handleLogin}>
         <div>
           <label> Email </label>
           <input type="email" placeholder="Email" name="email" required></input>
