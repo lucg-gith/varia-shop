@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 // NOTA: Llamar al proveedor con una funcion
 
-const UserProvider = () => {
+const UserProvider = (props) => {
   const [user, setUser] = useState(null);
 
   const login = () => setUser(true);
@@ -21,6 +21,6 @@ const UserProvider = () => {
   );
 };
 
-const useAuth = UseContext(UserContext);
+const useAuth = () => UseContext(UserContext);
 
 export { UserProvider, useAuth };
