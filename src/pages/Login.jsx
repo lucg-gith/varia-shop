@@ -7,7 +7,9 @@ const Login = () => {
 
   // nota al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
   const handleLogin = (e) => {
-    e.preventDeFault;
+    e.preventDefault();
+    //   onChange={(e) => setEmail(e.target.value)}
+    // onChange={(e) => setPassword(e.target.value)}
     login();
   };
   return (
@@ -15,7 +17,14 @@ const Login = () => {
       <form onSubmit={handleLogin}>
         <div>
           <label> Email </label>
-          <input type="email" placeholder="Email" name="email" required></input>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
         </div>
         <div>
           <label> Password </label>
@@ -24,10 +33,12 @@ const Login = () => {
             placeholder="Password"
             name="password"
             required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
         <div>
-          <button type="submit">Login</button>
+          <button>Login</button>
         </div>
       </form>
     </Layout>

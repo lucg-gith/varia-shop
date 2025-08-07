@@ -28,6 +28,12 @@ Detalles en Azul Claro: #A2B5CD (Para bordes o fondos secundarios)
 6. Manejar contentextos
 
 <!-- TODO uso forma nombrada en para exportar los componentes -->
-<!-- TODO agregar que cosas intale, las dependencias npm install y routes  -->
+<!-- TODO agregar que cosas intale, las dependencias npm install y routes (react-router-dom)  -->
+<!-- TODO utilizacion de useEffect(nos permite diferenciar el orden de aparicion de contenido para que no rompa), UseState, fetching (un metodo que aparece en la plataforma web, nativa de javascript) -->
 <!-- TODO porque uso props children en Layout -->
+<!-- TODO: el uso de contexto -->
 <!-- TODO agregar los estilos adentro de la carpeta src, crear carpeta de styles para comeponentes y paginas y cada componente su .css -->
+<!-- TODO doble validacion? required? and the set error set succes? -->
+
+MEJORAS GENERALES
+1 - REVISAR ORTOGRAFIA Y CONSISTENCIA DE IDIOMA
