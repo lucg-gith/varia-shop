@@ -1,4 +1,4 @@
-import { createContext, UserContext, useState } from "react";
+import { createContext, UseContext, useState } from "react";
 
 const UserContext = createContext();
 
@@ -14,13 +14,13 @@ const UserProvider = () => {
   const logout = () => setUser(null);
 
   return (
-    // NOTA: dentro del proveedor tengo que recibir a travez de propiedad children
+    // NOTA: dentro del proveedor tengo que recibir a travez de propiedad children. tengo que englobar toda la app con este proveedor.
     <UserContext.Provider value={(login, logout, user)}>
       {props.Children}
     </UserContext.Provider>
   );
 };
 
-const useAuth = UserContext(UserContext);
+const useAuth = UseContext(UserContext);
 
 export { UserProvider, useAuth };
