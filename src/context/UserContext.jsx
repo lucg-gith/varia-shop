@@ -6,7 +6,17 @@ const UserContext = createContext();
 const UserProvider = (props) => {
   const [user, setUser] = useState(null);
 
-  const login = () => setUser(true);
+  const login = async(username, password) => {
+// NOTA: realizamos peticiona al back para validar el username y password -  para obtener una respuesta
+const response = await fetch ( "https://fakestoreapi.com/auth/login" , {
+    // NOTA: todos los fetch tienen un method, un header y un body
+    method= "POST", 
+    headers: {
+        "content-type":"application/json"},
+    body: JSON.stringify({username,password})
+})
+
+  } ;
 
   // PREGUNTA: ¿Por qué no es false?
   const logout = () => setUser(null);
