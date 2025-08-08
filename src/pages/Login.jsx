@@ -5,18 +5,21 @@ import { useAuth } from "../context/UserContext";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const { login, user } = useAuth();
 
   // NOTA al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
   const handleLogin = (e) => {
     e.preventDefault();
-    login();
     console.log({ username, password });
     setUsername("");
     setPassword("");
+    login({ username: username.trim(), password: password.trim() });
   };
+
   return (
     <Layout>
+      <p> "username": "donero", "password": "ewedon",</p>
+      <p>User: johnd Password: m38rmF$</p>
       <form onSubmit={handleLogin}>
         <div>
           <label> Username </label>
@@ -43,6 +46,8 @@ const Login = () => {
         <div>
           <button>Login</button>
         </div>
+
+        {user && <p> USUARIO LOGEADO</p>}
       </form>
     </Layout>
   );

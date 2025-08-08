@@ -6,19 +6,30 @@ const UserContext = createContext();
 const UserProvider = (props) => {
   const [user, setUser] = useState(null);
 
-  const login = async(username, password) => {
-// NOTA: realizamos peticiona al back para validar el username y password -  para obtener una respuesta
-const response = await fetch ( "https://fakestoreapi.com/auth/login" , {
-    // NOTA: todos los fetch tienen un method, un header y un body
-    method= "POST", 
-    headers: {
-        "content-type":"application/json"},
-    body: JSON.stringify({username,password})
-})
+  const login = async ({ username, password }) => {
+    // User: johnd Password: m38rmF$
+    // NOTA: realizamos peticiona al back para validar el username y password -  para obtener una respuesta
+    console.log(username, password, "Test");
+    const response = await fetch("https://fakestoreapi.com/auth/login", {
+      // NOTA: todos los fetch tienen un method, un header y un body
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-  } ;
+    if (response.ok) {
+      // NOTA: validamos la info the user con la API
+      const token = await response.json();
+      setUser(token);
+      return;
+    }
 
-  // PREGUNTA: ¿Por qué no es false?
+    setUser(null);
+  };
+
+  // PREGUNTA: Por qué no es false?
   const logout = () => setUser(null);
 
   return (

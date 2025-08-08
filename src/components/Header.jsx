@@ -4,7 +4,7 @@ import { useAuth } from "../context/UserContext";
 
 const Header = () => {
   // NOTA: destructuring
-  const { user, logout } = useAuth();
+  const { user, logout, login } = useAuth();
 
   return (
     <>
@@ -19,6 +19,7 @@ const Header = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
+
             {user && (
               <>
                 <li>
