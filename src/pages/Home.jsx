@@ -111,7 +111,8 @@ const Home = () => {
     <Layout>
       <p>This is the Home</p>
 
-      {showPopUp && (
+      {/* EditProductComponent */}
+      {user && showPopUp && (
         <section>
           <form onSubmit={handleUpdate}>
             <div>
@@ -174,6 +175,7 @@ const Home = () => {
       {/* NOTA: map me devuelve una array - mapear: a cada producto le genero un <div/>.  */}
       {/* NOTA: hay que crear un switch para que aparezca o no el "editando prodcuto" */}
 
+      {/* ProductsListComponent */}
       {products.map((product) => (
         <div key={product.id}>
           <h2>{product.title}</h2>
