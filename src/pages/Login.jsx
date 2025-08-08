@@ -12,10 +12,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   // NOTA al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    const isLogin = login(username, password);
+    const isLogin = await login(username, password);
 
     if (isLogin) {
       console.log({ username, password });
