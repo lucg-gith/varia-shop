@@ -22,8 +22,10 @@ const UserProvider = (props) => {
     if (response.ok) {
       // NOTA: validamos la info the user con la API
       const token = await response.json();
-      setUser(token);
-      return;
+      setUser(true);
+      return token;
+    } else {
+      false;
     }
 
     setUser(null);

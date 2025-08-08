@@ -14,10 +14,15 @@ const Login = () => {
   // NOTA al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log({ username, password });
-    setUsername("");
-    setPassword("");
-    navigate("/");
+
+    const isLogin = login(username, password);
+
+    if (isLogin) {
+      console.log({ username, password });
+      setUsername("");
+      setPassword("");
+      navigate("/");
+    }
 
     // NOTA al profe: aca use trim porque me generaba error cuando copiaba
     // con espacios el user me parecio practico para no tener tanto ese error.
