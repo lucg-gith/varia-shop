@@ -1,11 +1,15 @@
 import { Layout } from "../components/Layout";
 import { useState } from "react";
 import { useAuth } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { login, user } = useAuth();
+
+  // NOTA: todos los hooks se declaran antes de usar
+  const navigate = useNavigate();
 
   // NOTA al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
   const handleLogin = (e) => {
@@ -13,6 +17,11 @@ const Login = () => {
     console.log({ username, password });
     setUsername("");
     setPassword("");
+    navigate("/");
+
+    // NOTA al profe: aca use trim porque me generaba error cuando copiaba
+    // con espacios el user me parecio practico para no tener tanto ese error.
+
     login({ username: username.trim(), password: password.trim() });
   };
 
