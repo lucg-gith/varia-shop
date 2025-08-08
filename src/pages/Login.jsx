@@ -10,10 +10,10 @@ const Login = () => {
   // NOTA al profe: No use el use state para setear caso de error porque agregue' required dentro del form.
   const handleLogin = (e) => {
     e.preventDefault();
-    //   onChange={(e) => setEmail(e.target.value)}
-    // onChange={(e) => setPassword(e.target.value)}
     login();
     console.log({ username, password });
+    setUsername("");
+    setPassword("");
   };
   return (
     <Layout>
