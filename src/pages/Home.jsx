@@ -111,6 +111,10 @@ const Home = () => {
     <Layout>
       <p>This is the Home</p>
 
+      <section>
+        <input type="text" placeholder="Busca tu producto..." />
+      </section>
+
       {/* EditProductComponent */}
       {user && showPopUp && (
         <section>
