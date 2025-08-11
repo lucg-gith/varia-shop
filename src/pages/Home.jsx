@@ -27,6 +27,24 @@ const Home = () => {
     fetchingProducts();
   }, []);
 
+  useEffect(() => {
+    // NOTA: Actualizamos el valor de filteredProducts
+    const prossecingSearch = search.trim().toLowerCase();
+    if (!prossecingSearch) {
+      setFilteredProducts(products);
+      return;
+    }
+
+    // [a,v,c,d] -> filterd by v ->  [v]
+    const updatedFilteredProducts = products.filter((product) => {
+      return String(product.title || "")
+        .toLowerCase()
+        .includes(prossecingSearch);
+    });
+
+    setFilteredProducts(updatedFilteredProducts);
+  }, [products, search]);
+
   // NOTA: Response es una respuesta tecnica de parte del la API, en forma de objeto.
 
   const fetchingProducts = async () => {
@@ -181,18 +199,20 @@ const Home = () => {
       {/* NOTA: hay que crear un switch para que aparezca o no el "editando prodcuto" */}
 
       {/* ProductsListComponent */}
-      {products
-        .filter((product) => {
-          const prossecingSearch = search.trim().toLowerCase();
-          if (prossecingSearch) {
-            return String(product.title || "")
-              .toLowerCase()
-              .includes(prossecingSearch);
-          }
+      {
+        // products
+        //   .filter((product) => {
+        //     const prossecingSearch = search.trim().toLowerCase();
+        //     if (prossecingSearch) {
+        //       return String(product.title || "")
+        //         .toLowerCase()
+        //         .includes(prossecingSearch);
+        //     }
 
-          return true;
-        })
-        .map((product) => (
+        //     return true;
+        //   })
+
+        filteredProducts.map((product) => (
           <div key={product.id}>
             <h2>{product.title}</h2>
             <img
@@ -223,18 +243,10 @@ const Home = () => {
               </div>
             )}
           </div>
-        ))}
+        ))
+      }
 
-      {products.filter((product) => {
-        const prossecingSearch = search.trim().toLowerCase();
-        if (prossecingSearch) {
-          return String(product.title || "")
-            .toLowerCase()
-            .includes(prossecingSearch);
-        }
-
-        return true;
-      }) && <div> No hay productos </div>}
+      {!filteredProducts.length && <div> No hay productos </div>}
     </Layout>
   );
 };
