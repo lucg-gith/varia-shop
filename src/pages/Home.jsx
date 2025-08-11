@@ -114,7 +114,7 @@ const Home = () => {
     <Layout>
       <p>This is the Home</p>
 
-      <SearchBar />
+      <SearchBar value={search} onChange={setSearch} />
 
       {/* EditProductComponent */}
       {user && showPopUp && (
@@ -181,38 +181,49 @@ const Home = () => {
       {/* NOTA: hay que crear un switch para que aparezca o no el "editando prodcuto" */}
 
       {/* ProductsListComponent */}
-      {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.title}</h2>
-          <img
-            style={{ height: "20px", width: "20px" }}
-            src={product.image}
-            alt="product image"
-          />
-          <p>${product.price}</p>
-          <p>{product.description}</p>
-          <p>{product.category}</p>
+      {products
+        .filter((product) => {
+          const prossecingSearch = search.trim().toLowerCase();
+          if (prossecingSearch) {
+            return String(product.title || "")
+              .toLowerCase()
+              .includes(prossecingSearch);
+          }
 
-          {user && (
-            <div>
-              <button
-                onClick={() => {
-                  handleOpenEdit(product);
-                }}
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => {
-                  handleDelete(product.id);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          )}
-        </div>
-      ))}
+          return true;
+        })
+        .map((product) => (
+          <div key={product.id}>
+            <h2>{product.title}</h2>
+            <img
+              style={{ height: "20px", width: "20px" }}
+              src={product.image}
+              alt="product image"
+            />
+            <p>${product.price}</p>
+            <p>{product.description}</p>
+            <p>{product.category}</p>
+
+            {user && (
+              <div>
+                <button
+                  onClick={() => {
+                    handleOpenEdit(product);
+                  }}
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => {
+                    handleDelete(product.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
     </Layout>
   );
 };
