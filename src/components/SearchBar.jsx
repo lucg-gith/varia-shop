@@ -1,14 +1,13 @@
-const SearchBar = () => {
-  const [filteredProducts, setFilteredProducts] = [];
-
-  Return(
+const SearchBar = ({ value, onChange }) => {
+  return (
     <section>
-      <label>Busqueda</label>
+      <label>Búsqueda</label>
       <input
         type="text"
         placeholder="Busca tu producto..."
-        value={filteredProducts}
-        onChange={(e) => setFilteredProducts(e.target.value)}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        autoComplete="off"
       />
     </section>
   );

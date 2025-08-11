@@ -2,6 +2,7 @@ import { Layout } from "../components/Layout";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useAuth } from "../context/UserContext";
+import { SearchBar } from "../components/SearchBar";
 
 const Home = () => {
   const { user } = useAuth();
@@ -112,6 +113,8 @@ const Home = () => {
   return (
     <Layout>
       <p>This is the Home</p>
+
+      <SearchBar />
 
       {/* EditProductComponent */}
       {user && showPopUp && (
