@@ -224,6 +224,17 @@ const Home = () => {
             )}
           </div>
         ))}
+
+      {products.filter((product) => {
+        const prossecingSearch = search.trim().toLowerCase();
+        if (prossecingSearch) {
+          return String(product.title || "")
+            .toLowerCase()
+            .includes(prossecingSearch);
+        }
+
+        return true;
+      }) && <div> No hay productos </div>}
     </Layout>
   );
 };
