@@ -19,6 +19,7 @@ const Home = () => {
   const [categoryEdit, setCategoryEdit] = useState("");
   const [imageEdit, setImageEdit] = useState("");
   const [search, setSearch] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   // NOTA: syntaxis useEffect(() => { aca va lo que se carga de forma secundaria}, [cuantas veces se ejecucuta, si esta vacio se ejecuta una sola vez])
   useEffect(() => {
@@ -111,16 +112,6 @@ const Home = () => {
   return (
     <Layout>
       <p>This is the Home</p>
-
-      <section>
-        <label>Busqueda</label>
-        <input
-          type="text"
-          placeholder="Busca tu producto..."
-          Value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </section>
 
       {/* EditProductComponent */}
       {user && showPopUp && (
