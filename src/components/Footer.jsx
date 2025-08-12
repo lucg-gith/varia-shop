@@ -1,12 +1,11 @@
+import "../styles/components/Footer.css";
+
 const Footer = () => {
   return (
     <footer>
       <p>
-        ______________________________________________________________________
-      </p>
-      <p>
         Proyecto creado por
-        {/* TODO STYLE: Add padding to the paragraph */}
+        {/* TODO STYLE: Add padding to the para  graph */}
         <a
           href="https://www.linkedin.com/in/luciagarre/?originalSubdomain=uk"
           target="_blank"
@@ -14,8 +13,8 @@ const Footer = () => {
           Lucia Garre
         </a>
       </p>
-      <p>
-        para el trabajo final del Curso Programador Web Inicial - Front End
+      <p className="footer-text">
+        Trabajo final del Curso Programador Web Inicial - VariaShop - Front End
         Developer - UTN - 2025
       </p>
     </footer>
