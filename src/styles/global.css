@@ -5,30 +5,14 @@ Texto Principal: #333333 (Un negro no tan intenso)
 Fondo/Espacio en Blanco: #F7F7F7 (Un blanco ligeramente cálido)
 Detalles en Azul Claro: #A2B5CD (Para bordes o fondos secundarios) */
 
-/* NOTA: :root selector afecta el html */
-:root {
-  --vs-primary: #6b7a8f; /* Azul grisáceo */
-  --vs-danger: #d9534f; /* Rojo suave (alerts/errors) */
-  --vs-text: #333333; /* Texto principal */
-  --vs-bg: #f7f7f7; /* Fondo */
-  --vs-accent: #a2b5cd; /* Detalles / bordes */
-
-  /* NOTA:  Mapeo a las variables de bootstrap*/
-  --bs-primary: var(--vs-primary);
-  --bs-danger: var(--vs-danger);
-  --bs-body-color: var(--vs-text);
-  --bs-body-bg: var(--vs-bg);
-  --bs-link-color: var(--vs-primary);
-  --bs-border-color: var(--vs-accent);
-}
-
 /* NOTA: *:before, *:after  */
 
-*,
-*:before,
-*:after {
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 html,
 body,
 #root {
