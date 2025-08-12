@@ -7,7 +7,6 @@ const SearchBar = ({ value, onChange }) => {
         placeholder="Busca tu producto..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        autoComplete="off"
       />
     </section>
   );
