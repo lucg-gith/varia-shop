@@ -1,0 +1,52 @@
+/* 
+Azul Grisáceo: #6B7A8F (Color principal suave)
+Rojo Suave: #D9534F (Para notificaciones o alertas sutiles)
+Texto Principal: #333333 (Un negro no tan intenso)
+Fondo/Espacio en Blanco: #F7F7F7 (Un blanco ligeramente cálido)
+Detalles en Azul Claro: #A2B5CD (Para bordes o fondos secundarios) */
+
+/* NOTA: :root selector afecta el html */
+:root {
+  --vs-primary: #6b7a8f; /* Azul grisáceo */
+  --vs-danger: #d9534f; /* Rojo suave (alerts/errors) */
+  --vs-text: #333333; /* Texto principal */
+  --vs-bg: #f7f7f7; /* Fondo */
+  --vs-accent: #a2b5cd; /* Detalles / bordes */
+
+  /* NOTA:  Mapeo a las variables de bootstrap*/
+  --bs-primary: var(--vs-primary);
+  --bs-danger: var(--vs-danger);
+  --bs-body-color: var(--vs-text);
+  --bs-body-bg: var(--vs-bg);
+  --bs-link-color: var(--vs-primary);
+  --bs-border-color: var(--vs-accent);
+}
+
+/* NOTA: *:before, *:after  */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  padding: 30px;
+  margin: 20;
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial,
+    sans-serif;
+  font-size: 10px;
+  line-height: 1.2;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
