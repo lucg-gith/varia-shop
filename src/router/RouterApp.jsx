@@ -5,6 +5,7 @@ import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { NotFound } from "../pages/NotFound";
 import { PrivateRoute } from "../components/PrivateRoute";
+import { SobreNosotros } from "../pages/SobreNosotros";
 
 const RouterApp = () => {
   return (
@@ -21,6 +22,7 @@ const RouterApp = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/AboutUs" element={<SobreNosotros />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
