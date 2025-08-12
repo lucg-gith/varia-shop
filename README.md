@@ -37,6 +37,7 @@ LISTADO DE HERRAMIENTAS UTLIZADAS PARA EL PROYECTO
 <!-- TODO agregar los estilos adentro de la carpeta src, crear carpeta de styles para comeponentes y paginas y cada componente su .css -->
 <!-- TODO: UseNAvigate -->
 <!-- TODO: privateROUTES -->
+<!-- TODO: I install boostrap -->
 
 MEJORAS GENERALES
 1 - REVISAR ORTOGRAFIA Y CONSISTENCIA DE IDIOMA
