@@ -84,6 +84,5 @@ p {
   border-color: var(--bs-primary);
 }
 
-.why-us .feature-card:hover {
-  background-color: #f0fcff;
-}
+/* .why-us .feature-card:hover {
+} */

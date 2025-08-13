@@ -3,7 +3,7 @@ import "../styles/components/Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <p>
+      <p style={{ color: "white" }}>
         Proyecto creado por
         {/* TODO STYLE: Add padding to the para  graph */}
         <a
