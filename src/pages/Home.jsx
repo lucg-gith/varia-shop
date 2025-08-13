@@ -132,138 +132,179 @@ const Home = () => {
   };
 
   return (
-    <Layout>
-      <p>This is the Home</p>
-
-      {/* NOTA: barra de busqueda controlada */}
-      <div className="container mb-3">
-        <SearchBar value={search} onChange={setSearch} />
-      </div>
-
-      {/* NOTA: EditProductComponent */}
-      {user && showPopUp && (
-        <section className="container mb-4">
-          <form onSubmit={handleUpdate}>
-            <div>
-              <label>Title</label>
-              <input
-                type="text"
-                placeholder="Ingrese el titulo"
-                value={titleEdit}
-                onChange={(e) => setTitleEdit(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Price</label>
-              <input
-                type="number"
-                placeholder="Ingrese el precio"
-                value={priceEdit}
-                onChange={(e) => setPriceEdit(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Description</label>
-              <textarea
-                value={descriptionEdit}
-                onChange={(e) => setDescriptionEdit(e.target.value)}
-              />
-            </div>
-            <div>
-              {/* TODO: incorporar select */}
-              <label>Category</label>
-              <input
-                type="text"
-                placeholder="Ingrese la categoria"
-                value={categoryEdit}
-                onChange={(e) => setCategoryEdit(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>image</label>
-              <input
-                type="text"
-                placeholder="Ingrese la URL de la imagen"
-                value={imageEdit}
-                onChange={(e) => setImageEdit(e.target.value)}
-              />
-            </div>
-            <button>Update</button>
-          </form>
-          <button onClick={() => setShowPopUp(null)}>Cancelar</button>
-        </section>
-      )}
-
-      {/* NOTAL ProductsListComponent */}
-      {/* NOTA: grid de Bootstrap con cards para mostrar productos */}
-      <div className="container py-3 text-start">
-        <div className="product-grid">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="card h-100 shadow-sm">
-              {/* NOTA: imagen con object-fit para mantener proporcion */}
-              <img
-                src={product.image}
-                alt={product.title}
-                className="card-img-top p-3"
-                style={{ height: "150px", objectFit: "contain" }}
-              />
-
-              <div className="product-title card-body d-flex flex-column">
-                <h6 className="card-title text-truncate" title={product.title}>
-                  {product.title}
-                </h6>
-
-                <p
-                  className="product-price h6 mb-1"
-                  style={{ color: "#095373ff" }}
-                >
-                  ${Number(product.price).toFixed(2)}
+    <body>
+      <Layout>
+        <h1 className="text-center ">Bienvenido a VariaShop</h1>
+        <section className="container text-center mb-4 why-us">
+          <h2 className="h5 mb-3 text-center">Por qué elegirnos</h2>
+          <div className="row g-3">
+            <div className="col-12 col-sm-6 col-lg-3">
+              <div className="feature-card border border-primary border-2 rounded p-3 h-100">
+                <div className="fw-semibold mb-1">Envío rápido</div>
+                <p className="small text-muted mb-0">
+                  Procesamos pedidos en 24hs
                 </p>
-
-                <p
-                  className="card-text text-muted small clamp clamp-5 text-start"
-                  style={{
-                    color: "#4A4A4A",
-                  }}
-                >
-                  {product.description}
-                </p>
-
-                <div
-                  className="product-category fw-semibold text-uppercase mb-3"
-                  style={{ color: "#095373ff" }}
-                >
-                  {product.category}
-                </div>
-
-                {/* NOTA: acciones alineadas abajo de la card */}
-                {user && (
-                  <div className="mt-auto d-flex gap-2">
-                    <button
-                      className="btn btn-outline-primary"
-                      onClick={() => handleOpenEdit(product)}
-                    >
-                      Editar
-                    </button>
-                    <button
-                      className="btn btn-danger"
-                      style={{ color: "#095373ff" }}
-                      onClick={() => handleDelete(product.id)}
-                    >
-                      Eliminar
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
-          ))}
+
+            <div className="col-12 col-sm-6 col-lg-3">
+              <div className="feature-card border border-primary border-2 rounded p-3 h-100">
+                <div className="fw-semibold mb-1">Pagos seguros</div>
+                <p className="small text-muted mb-0">
+                  Tus datos siempre protegidos
+                </p>
+              </div>
+            </div>
+
+            <div className="col-12 col-sm-6 col-lg-3">
+              <div className="feature-card border border-primary border-2 rounded p-3 h-100">
+                <div className="fw-semibold mb-1">Calidad garantizada</div>
+                <p className="small text-muted mb-0">Marcas seleccionadas.</p>
+              </div>
+            </div>
+
+            <div className="col-12 col-sm-6 col-lg-3">
+              <div className="feature-card border border-primary border-2 rounded p-3 h-100">
+                <div className="fw-semibold mb-1">Soporte 24/7</div>
+                <p className="small text-muted mb-0">Siempre disponibles.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* NOTA: barra de busqueda controlada */}
+        <div className="container mb-3 text-center">
+          <SearchBar value={search} onChange={setSearch} />
         </div>
 
-        {!filteredProducts.length && (
-          <div className="text-center py-5 text-muted">No hay productos</div>
+        {/* NOTA: EditProductComponent */}
+        {user && showPopUp && (
+          <section className="container mb-4">
+            <form onSubmit={handleUpdate}>
+              <div>
+                <label>Title</label>
+                <input
+                  type="text"
+                  placeholder="Ingrese el titulo"
+                  value={titleEdit}
+                  onChange={(e) => setTitleEdit(e.target.value)}
+                />
+              </div>
+              <div>
+                <label>Price</label>
+                <input
+                  type="number"
+                  placeholder="Ingrese el precio"
+                  value={priceEdit}
+                  onChange={(e) => setPriceEdit(e.target.value)}
+                />
+              </div>
+              <div>
+                <label>Description</label>
+                <textarea
+                  value={descriptionEdit}
+                  onChange={(e) => setDescriptionEdit(e.target.value)}
+                />
+              </div>
+              <div>
+                {/* TODO: incorporar select */}
+                <label>Category</label>
+                <input
+                  type="text"
+                  placeholder="Ingrese la categoria"
+                  value={categoryEdit}
+                  onChange={(e) => setCategoryEdit(e.target.value)}
+                />
+              </div>
+              <div>
+                <label>image</label>
+                <input
+                  type="text"
+                  placeholder="Ingrese la URL de la imagen"
+                  value={imageEdit}
+                  onChange={(e) => setImageEdit(e.target.value)}
+                />
+              </div>
+              <button>Update</button>
+            </form>
+            <button onClick={() => setShowPopUp(null)}>Cancelar</button>
+          </section>
         )}
-      </div>
-    </Layout>
+
+        {/* NOTAL ProductsListComponent */}
+        {/* NOTA: grid de Bootstrap con cards para mostrar productos */}
+        <div className="container py-3 text-start">
+          <div className="product-grid">
+            {filteredProducts.map((product) => (
+              <div key={product.id} className="card h-100 shadow-sm">
+                {/* NOTA: imagen con object-fit para mantener proporcion */}
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="card-img-top p-3"
+                  style={{ height: "150px", objectFit: "contain" }}
+                />
+
+                <div className="product-title card-body d-flex flex-column">
+                  <h6
+                    className="card-title text-truncate"
+                    title={product.title}
+                  >
+                    {product.title}
+                  </h6>
+
+                  <p
+                    className="product-price h6 mb-1"
+                    style={{ color: "#095373ff" }}
+                  >
+                    ${Number(product.price).toFixed(2)}
+                  </p>
+
+                  <p
+                    className="card-text text-muted small clamp clamp-5 text-start"
+                    style={{
+                      color: "#4A4A4A",
+                    }}
+                  >
+                    {product.description}
+                  </p>
+
+                  <div
+                    className="product-category fw-semibold text-uppercase mb-3"
+                    style={{ color: "#095373ff" }}
+                  >
+                    {product.category}
+                  </div>
+
+                  {/* NOTA: acciones alineadas abajo de la card */}
+                  {user && (
+                    <div className="mt-auto d-flex gap-2">
+                      <button
+                        className="btn btn-outline-primary"
+                        onClick={() => handleOpenEdit(product)}
+                      >
+                        Editar
+                      </button>
+                      <button
+                        className="btn btn-danger"
+                        style={{ color: "#095373ff" }}
+                        onClick={() => handleDelete(product.id)}
+                      >
+                        Eliminar
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {!filteredProducts.length && (
+            <div className="text-center py-5 text-muted">No hay productos</div>
+          )}
+        </div>
+      </Layout>
+    </body>
   );
 };
 

@@ -60,3 +60,30 @@
   height: 160px; /* ajusta si quieres más chica o grande */
   object-fit: contain;
 }
+
+body {
+  background-color: #f7f7f7;
+  color: #333333;
+  margin: 100px;
+}
+
+p {
+  color: #4a4a4a;
+  font-size: 12px;
+}
+
+/* .info-variashop {
+  background-color: #1d2d4a;
+  
+} */
+
+.why-us .feature-card {
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #fff;
+  border-color: var(--bs-primary);
+}
+
+.why-us .feature-card:hover {
+  background-color: #f0fcff;
+}
