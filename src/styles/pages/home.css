@@ -1,0 +1,62 @@
+/* NOTA: Base para clamping de varias lineas */
+.clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* NOTA: Variantes por cantidad de lineas */
+.clamp-2 {
+  -webkit-line-clamp: 2;
+}
+.clamp-3 {
+  -webkit-line-clamp: 3;
+}
+.clamp-5 {
+  -webkit-line-clamp: 5;
+}
+
+/* NOTA: Texto un poco mas compacto dentro de cards */
+.card .card-text {
+  line-height: 1.25;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* celu: 1 colulmna */
+  gap: 10px;
+}
+
+/* NOTA: Los media queris  */
+/* tablet: 2 columnas */
+@media (min-width: 481px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* desktop: 3 columnas */
+@media (min-width: 881px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* NOTA: evita overflow por contenido ancho dentro de celdas */
+.product-grid > * {
+  min-width: 0;
+}
+
+/* NOTA: rompe palabras largas en títulos y descripciones */
+.card-title,
+.card-text {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* NOTA: imagen contenida para que no empuje el layout */
+.card-img-top {
+  width: 100%;
+  height: 160px; /* ajusta si quieres más chica o grande */
+  object-fit: contain;
+}

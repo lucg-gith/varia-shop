@@ -5,6 +5,7 @@ import { useAuth } from "../context/UserContext";
 import { SearchBar } from "../components/SearchBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "../styles/pages/home.css";
 
 const Home = () => {
   const { user } = useAuth();
@@ -195,66 +196,64 @@ const Home = () => {
 
       {/* NOTAL ProductsListComponent */}
       {/* NOTA: grid de Bootstrap con cards para mostrar productos */}
-      <div className="container py-4">
-        <div className="row g-4">
+      <div className="container py-3 text-start">
+        <div className="product-grid">
           {filteredProducts.map((product) => (
-            <div className="col-6 col-sm-3 col-md-2 col-lg-2" key={product.id}>
-              <div className="card h-100 shadow-sm">
-                {/* NOTA: imagen con object-fit para mantener proporcion */}
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="card-img-top p-3"
-                  style={{ height: "220px", objectFit: "contain" }}
-                />
+            <div key={product.id} className="card h-100 shadow-sm">
+              {/* NOTA: imagen con object-fit para mantener proporcion */}
+              <img
+                src={product.image}
+                alt={product.title}
+                className="card-img-top p-3"
+                style={{ height: "50px", objectFit: "contain" }}
+              />
 
-                <div className="product-title card-body d-flex flex-column">
-                  <h6
-                    className="card-title text-truncate"
-                    title={product.title}
-                  >
-                    {product.title}
-                  </h6>
+              <div className="product-title card-body d-flex flex-column">
+                <h6 className="card-title text-truncate" title={product.title}>
+                  {product.title}
+                </h6>
 
-                  <p
-                    className="product-price h6 mb-1"
-                    style={{ color: "#095373ff" }}
-                  >
-                    ${Number(product.price).toFixed(2)}
-                  </p>
+                <p
+                  className="product-price h6 mb-1"
+                  style={{ color: "#095373ff" }}
+                >
+                  ${Number(product.price).toFixed(2)}
+                </p>
 
-                  <p
-                    className="product-description card-text text-muted fs-8 line-clamp-5 mb-1"
-                    style={{ color: "#4A4A4A" }}
-                  >
-                    {product.description}
-                  </p>
+                <p
+                  className="card-text text-muted small clamp clamp-5 text-start"
+                  style={{
+                    color: "#4A4A4A",
+                  }}
+                >
+                  {product.description}
+                </p>
 
-                  <div
-                    className="product-category fw-semibold text-uppercase mb-3"
-                    style={{ color: "#095373ff" }}
-                  >
-                    {product.category}
-                  </div>
-
-                  {/* NOTA: acciones alineadas abajo de la card */}
-                  {user && (
-                    <div className="mt-auto d-flex gap-2">
-                      <button
-                        className="btn btn-outline-primary"
-                        onClick={() => handleOpenEdit(product)}
-                      >
-                        Editar
-                      </button>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => handleDelete(product.id)}
-                      >
-                        Eliminar
-                      </button>
-                    </div>
-                  )}
+                <div
+                  className="product-category fw-semibold text-uppercase mb-3"
+                  style={{ color: "#095373ff" }}
+                >
+                  {product.category}
                 </div>
+
+                {/* NOTA: acciones alineadas abajo de la card */}
+                {user && (
+                  <div className="mt-auto d-flex gap-2">
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={() => handleOpenEdit(product)}
+                    >
+                      Editar
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      style={{ color: "#095373ff" }}
+                      onClick={() => handleDelete(product.id)}
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}
