@@ -2,6 +2,7 @@ import { Layout } from "../components/Layout";
 import { useState } from "react";
 import { useAuth } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import "../styles/pages/Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -32,11 +33,21 @@ const Login = () => {
 
   return (
     <Layout>
-      <p> "username": "donero", "password": "ewedon",</p>
-      <p>User: johnd Password: m38rmF$</p>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label> Username </label>
+      <p className=" user-card p-3  bg-body rounded-top-3 mb-0 text-center">
+        Usuarios para test
+      </p>
+      <p className=" user-card p-3  bg-body rounded-top-3 mb-0 text-center">
+        username: donero, password: ewedon
+      </p>
+      <p className=" user-card p-3  bg-body rounded-bottom-3 mt-0 text-center border-top-0">
+        username: johnd, password: m38rmF$
+      </p>
+      <form
+        onSubmit={handleLogin}
+        className="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto my-4 p-4 rounded-4 border border-success bg-body shadow-sm"
+      >
+        <div className="mb-3">
+          <label className="form-label"> Username </label>
           <input
             type="text"
             placeholder="Username"
@@ -44,10 +55,12 @@ const Login = () => {
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          ></input>
+            className="form-control"
+          />
         </div>
-        <div>
-          <label> Password </label>
+
+        <div className="mb-3">
+          <label className="form-label"> Password </label>
           <input
             type="password"
             placeholder="Password"
@@ -55,13 +68,20 @@ const Login = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <button>Login</button>
+            className="form-control"
+          />
         </div>
 
-        {user && <p> USUARIO LOGEADO</p>}
+        <div>
+          <button className="btn btn-success w-100">Login</button>
+        </div>
+
+        {user && (
+          <p className="alert alert-success text-center mt-3">
+            {" "}
+            USUARIO LOGEADO
+          </p>
+        )}
       </form>
     </Layout>
   );
