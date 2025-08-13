@@ -132,11 +132,14 @@ const Home = () => {
     <Layout>
       <p>This is the Home</p>
 
-      <SearchBar value={search} onChange={setSearch} />
+      {/* NOTA: barra de busqueda controlada */}
+      <div className="container mb-3">
+        <SearchBar value={search} onChange={setSearch} />
+      </div>
 
-      {/* EditProductComponent */}
+      {/* NOTA: EditProductComponent */}
       {user && showPopUp && (
-        <section>
+        <section className="container mb-4">
           <form onSubmit={handleUpdate}>
             <div>
               <label>Title</label>
@@ -145,7 +148,7 @@ const Home = () => {
                 placeholder="Ingrese el titulo"
                 value={titleEdit}
                 onChange={(e) => setTitleEdit(e.target.value)}
-              ></input>
+              />
             </div>
             <div>
               <label>Price</label>
@@ -154,14 +157,14 @@ const Home = () => {
                 placeholder="Ingrese el precio"
                 value={priceEdit}
                 onChange={(e) => setPriceEdit(e.target.value)}
-              ></input>
+              />
             </div>
             <div>
               <label>Description</label>
               <textarea
                 value={descriptionEdit}
                 onChange={(e) => setDescriptionEdit(e.target.value)}
-              ></textarea>
+              />
             </div>
             <div>
               {/* TODO: incorporar select */}
@@ -171,7 +174,7 @@ const Home = () => {
                 placeholder="Ingrese la categoria"
                 value={categoryEdit}
                 onChange={(e) => setCategoryEdit(e.target.value)}
-              ></input>
+              />
             </div>
             <div>
               <label>image</label>
@@ -180,73 +183,79 @@ const Home = () => {
                 placeholder="Ingrese la URL de la imagen"
                 value={imageEdit}
                 onChange={(e) => setImageEdit(e.target.value)}
-              ></input>
+              />
             </div>
             <button>Update</button>
           </form>
-
-          <button
-            onClick={() => {
-              setShowPopUp(null);
-            }}
-          >
-            Cancelar
-          </button>
+          <button onClick={() => setShowPopUp(null)}>Cancelar</button>
         </section>
       )}
 
-      {/* NOTA: map me devuelve una array - mapear: a cada producto le genero un <div/>.  */}
-      {/* NOTA: hay que crear un switch para que aparezca o no el "editando prodcuto" */}
+      {/* NOTAL ProductsListComponent */}
+      {/* NOTA: grid de Bootstrap con cards para mostrar productos */}
+      <div className="container py-4">
+        <div className="row g-3">
+          {filteredProducts.map((product) => (
+            <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={product.id}>
+              <div className="card h-100 shadow-sm">
+                {/* NOTA: imagen con object-fit para mantener proporcion */}
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="card-img-top p-3"
+                  style={{ height: "220px", objectFit: "contain" }}
+                />
 
-      {/* ProductsListComponent */}
-      {
-        // products
-        //   .filter((product) => {
-        //     const prossecingSearch = search.trim().toLowerCase();
-        //     if (prossecingSearch) {
-        //       return String(product.title || "")
-        //         .toLowerCase()
-        //         .includes(prossecingSearch);
-        //     }
+                <div className="card-body d-flex flex-column">
+                  <h5
+                    className="card-title text-truncate"
+                    title={product.title}
+                  >
+                    {product.title}
+                  </h5>
 
-        //     return true;
-        //   })
+                  <p className="h5 text-primary mb-2">
+                    ${Number(product.price).toFixed(2)}
+                  </p>
 
-        filteredProducts.map((product) => (
-          <div key={product.id}>
-            <h2>{product.title}</h2>
-            <img
-              style={{ height: "20px", width: "20px" }}
-              src={product.image}
-              alt="product image"
-            />
-            <p>${product.price}</p>
-            <p>{product.description}</p>
-            <p>{product.category}</p>
+                  <p className="card-text text-muted line-clamp-3 mb-3">
+                    {product.description}
+                  </p>
 
-            {user && (
-              <div>
-                <button
-                  onClick={() => {
-                    handleOpenEdit(product);
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => {
-                    handleDelete(product.id);
-                  }}
-                >
-                  Delete
-                </button>
+                  <div
+                    className="fw-semibold text-uppercase mb-3"
+                    style={{ color: "#0b84b8ff" }}
+                  >
+                    {product.category}
+                  </div>
+
+                  {/* NOTA: acciones alineadas abajo de la card */}
+                  {user && (
+                    <div className="mt-auto d-flex gap-2">
+                      <button
+                        className="btn btn-outline-primary"
+                        onClick={() => handleOpenEdit(product)}
+                      >
+                        Editar
+                      </button>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleDelete(product.id)}
+                      >
+                        Eliminar
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
-          </div>
-        ))
-      }
+            </div>
+          ))}
+        </div>
 
-      {!filteredProducts.length && <div> No hay productos </div>}
+        {!filteredProducts.length && (
+          <div className="text-center py-5 text-muted">No hay productos</div>
+        )}
+      </div>
     </Layout>
   );
 };
