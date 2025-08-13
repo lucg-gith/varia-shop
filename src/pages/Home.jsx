@@ -171,64 +171,87 @@ const Home = () => {
         </div>
       </section>
 
+      {/* NOTA: EditProductComponent */}
+      {user && showPopUp && (
+        <section className="container mb-4" style={{ padding: "20px 0 5px 0" }}>
+          <div
+            className="card shadow-sm border-success rounded-4 p-4"
+            style={{ maxWidth: "500px", margin: "auto" }}
+          >
+            <form onSubmit={handleUpdate}>
+              <div className="mb-3">
+                <label className="form-label">Title</label>
+                <input
+                  type="text"
+                  placeholder="Ingrese el titulo"
+                  value={titleEdit}
+                  onChange={(e) => setTitleEdit(e.target.value)}
+                  className="form-control form-control-lg"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Price</label>
+                <input
+                  type="number"
+                  placeholder="Ingrese el precio"
+                  value={priceEdit}
+                  onChange={(e) => setPriceEdit(e.target.value)}
+                  className="form-control form-control-lg"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Description</label>
+                <textarea
+                  value={descriptionEdit}
+                  onChange={(e) => setDescriptionEdit(e.target.value)}
+                  className="form-control"
+                  rows="4"
+                />
+              </div>
+
+              <div className="mb-3">
+                {/* TODO: incorporar select */}
+                <label className="form-label">Category</label>
+                <input
+                  type="text"
+                  placeholder="Ingrese la categoria"
+                  value={categoryEdit}
+                  onChange={(e) => setCategoryEdit(e.target.value)}
+                  className="form-control form-control-lg"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Image</label>
+                <input
+                  type="text"
+                  placeholder="Ingrese la URL de la imagen"
+                  value={imageEdit}
+                  onChange={(e) => setImageEdit(e.target.value)}
+                  className="form-control form-control-lg"
+                />
+              </div>
+
+              <div className="d-flex gap-2">
+                <button className="btn btn-success btn-lg w-100">Update</button>
+                <button
+                  type="button"
+                  onClick={() => setShowPopUp(null)}
+                  className="btn btn-outline-secondary btn-lg w-100"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      )}
       {/* NOTA: barra de busqueda controlada */}
       <div className="text-center">
         <SearchBar value={search} onChange={setSearch} />
       </div>
-
-      {/* NOTA: EditProductComponent */}
-      {user && showPopUp && (
-        <section className="container mb-4">
-          <form onSubmit={handleUpdate}>
-            <div>
-              <label>Title</label>
-              <input
-                type="text"
-                placeholder="Ingrese el titulo"
-                value={titleEdit}
-                onChange={(e) => setTitleEdit(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Price</label>
-              <input
-                type="number"
-                placeholder="Ingrese el precio"
-                value={priceEdit}
-                onChange={(e) => setPriceEdit(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Description</label>
-              <textarea
-                value={descriptionEdit}
-                onChange={(e) => setDescriptionEdit(e.target.value)}
-              />
-            </div>
-            <div>
-              {/* TODO: incorporar select */}
-              <label>Category</label>
-              <input
-                type="text"
-                placeholder="Ingrese la categoria"
-                value={categoryEdit}
-                onChange={(e) => setCategoryEdit(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>image</label>
-              <input
-                type="text"
-                placeholder="Ingrese la URL de la imagen"
-                value={imageEdit}
-                onChange={(e) => setImageEdit(e.target.value)}
-              />
-            </div>
-            <button>Update</button>
-          </form>
-          <button onClick={() => setShowPopUp(null)}>Cancelar</button>
-        </section>
-      )}
 
       {/* NOTAL ProductsListComponent */}
       {/* NOTA: grid de Bootstrap con cards para mostrar productos */}
