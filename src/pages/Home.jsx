@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useAuth } from "../context/UserContext";
 import { SearchBar } from "../components/SearchBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const Home = () => {
   const { user } = useAuth();
@@ -194,9 +196,9 @@ const Home = () => {
       {/* NOTAL ProductsListComponent */}
       {/* NOTA: grid de Bootstrap con cards para mostrar productos */}
       <div className="container py-4">
-        <div className="row g-3">
+        <div className="row g-4">
           {filteredProducts.map((product) => (
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={product.id}>
+            <div className="col-6 col-sm-3 col-md-2 col-lg-2" key={product.id}>
               <div className="card h-100 shadow-sm">
                 {/* NOTA: imagen con object-fit para mantener proporcion */}
                 <img
@@ -206,25 +208,31 @@ const Home = () => {
                   style={{ height: "220px", objectFit: "contain" }}
                 />
 
-                <div className="card-body d-flex flex-column">
-                  <h5
+                <div className="product-title card-body d-flex flex-column">
+                  <h6
                     className="card-title text-truncate"
                     title={product.title}
                   >
                     {product.title}
-                  </h5>
+                  </h6>
 
-                  <p className="h5 text-primary mb-2">
+                  <p
+                    className="product-price h6 mb-1"
+                    style={{ color: "#095373ff" }}
+                  >
                     ${Number(product.price).toFixed(2)}
                   </p>
 
-                  <p className="card-text text-muted line-clamp-3 mb-3">
+                  <p
+                    className="product-description card-text text-muted fs-8 line-clamp-5 mb-1"
+                    style={{ color: "#4A4A4A" }}
+                  >
                     {product.description}
                   </p>
 
                   <div
-                    className="fw-semibold text-uppercase mb-3"
-                    style={{ color: "#0b84b8ff" }}
+                    className="product-category fw-semibold text-uppercase mb-3"
+                    style={{ color: "#095373ff" }}
                   >
                     {product.category}
                   </div>
