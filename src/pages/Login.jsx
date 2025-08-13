@@ -16,24 +16,24 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const isLogin = await login(username, password);
+    await login({
+      username: username.trim(),
+      password: password.trim(),
+    });
 
-    if (isLogin) {
+    // NOTA al profe: aca use trim porque me generaba error cuando copiaba
+    // con espacios el user me parecio practico para no tener tanto ese error.
+    if (user) {
       console.log({ username, password });
       setUsername("");
       setPassword("");
       navigate("/");
     }
-
-    // NOTA al profe: aca use trim porque me generaba error cuando copiaba
-    // con espacios el user me parecio practico para no tener tanto ese error.
-
-    login({ username: username.trim(), password: password.trim() });
   };
 
   return (
     <Layout>
-      <p className=" user-card p-3  bg-body rounded-top-3 mb-0 text-center">
+      <p className=" text-decoration-underline user-card p-3  bg-body rounded-top-3 mb-0 text-center">
         Usuarios para test
       </p>
       <p className=" user-card p-3  bg-body rounded-top-3 mb-0 text-center">
@@ -78,7 +78,6 @@ const Login = () => {
 
         {user && (
           <p className="alert alert-success text-center mt-3">
-            {" "}
             USUARIO LOGEADO
           </p>
         )}

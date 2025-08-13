@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 // NOTA: Llamar al proveedor con una funcion
 const UserProvider = (props) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // para Login
 
   const login = async ({ username, password }) => {
     // User: johnd Password: m38rmF$
@@ -31,12 +31,17 @@ const UserProvider = (props) => {
     setUser(null);
   };
 
+  const register = ({ username, email, password }) => {
+    const newUser = { username, email };
+    setUser(true);
+  };
+
   // PREGUNTA: Por qué no es false?
   const logout = () => setUser(null);
 
   return (
     // NOTA: dentro del proveedor tengo que recibir a travez de propiedad children. tengo que englobar toda la app con este proveedor.
-    <UserContext.Provider value={{ login, logout, user }}>
+    <UserContext.Provider value={{ login, logout, user, register }}>
       {props.children}
     </UserContext.Provider>
   );
