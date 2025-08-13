@@ -205,7 +205,7 @@ const Home = () => {
                 src={product.image}
                 alt={product.title}
                 className="card-img-top p-3"
-                style={{ height: "50px", objectFit: "contain" }}
+                style={{ height: "150px", objectFit: "contain" }}
               />
 
               <div className="product-title card-body d-flex flex-column">
