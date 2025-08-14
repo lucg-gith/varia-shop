@@ -1,45 +1,32 @@
-Planificacion de como encarar el proyecto:
+Nombre del proyecto:
+varia-shop
 
-Nombre del proyecto: varia-shop
+Objetivo general:
+Crear una tienda online sencilla para practicar React y el stack del curso-Front-End. La app permite explorar productos, buscar por nombre con coincidencia parcial, iniciar sesión de prueba, borrar y agregar productos.
 
-posibles de paleta de colores:
+Funcionalidades implementadas:
+-Listado de productos con imagen, título, precio y descripción.
+-Búsqueda en el Home con coincidencia a medida que escribo. La lista se filtra mientras se escribe y no recarga la página.
+-Autenticacion de usuarios en LogIn
+-Editar y eliminar productos usando la API Fake Store.
+-Navegación con React Router.
+-Utilizacion de rutas protegidas básicas.
+-Utilizacion de contexto para acceso restringido o habilitado.
+interfaz responsiva con Bootstrap, incluyendo navbar con menú hamburguesa.
+-Estados de cargando, error y sin resultados.
+-Página Not Found con enlace que retorna al inicio.
 
-opc 1
-Azul Oscuro Principal: #0D2447 (Para fondos, barras de navegación)
-Rojo: #E63946 (Para botones, íconos)
-Gris para Texto: #4A4A4A (Para párrafos y texto general)
-Fondo Claro: #F1FAEE (Para el fondo principal de la página)
-Blanco: #FFFFFF (Para texto sobre fondos oscuros)
+Instrucciones para ejecutar localmente
+-Clonar este repositorio.
+Dependencias y recursos requeridos:
+-React con Vite
+-React Router
+-Bootstrap 5 para estilos
+-Fake Store API https://fakestoreapi.com
+-Credenciales de prueba:
+User: johnd Password: m38rmF$
 
-opc 2
-Azul Grisáceo: #6B7A8F (Color principal suave)
-Rojo Suave: #D9534F (Para notificaciones o alertas sutiles)
-Texto Principal: #333333 (Un negro no tan intenso)
-Fondo/Espacio en Blanco: #F7F7F7 (Un blanco ligeramente cálido)
-Detalles en Azul Claro: #A2B5CD (Para bordes o fondos secundarios)
+<!-- NOTA AL PROFE
+En este proyecto pude fijar en la práctica varios conceptos que vos remarcabas en clase. Lo que más me costó fue la barra de búsqueda filtrando en memoria y reencaminar los colores de Bootstrap a mi paleta, pero lo resolví con práctica y pruebas. Usé inteligencia artificial lo menos posible y, cuando la usé, siempre le pedí explicaciones y ejemplos para entender el porqué de cada paso. También busqué soluciones en foros y en videos de YouTube para desbloquearme con errores puntuales. Todo esto me ayudó a ordenar el manejo de estado, mejorar el enrutado con React Router y pulir la experiencia visual con utilidades de Bootstrap. Siento que el resultado quedó simple y consistente, y refleja mi proceso de aprendizaje y todo lo que me queda por practicar! -->
 
-<!-- TODO Pensar tipografia  -->
-
-1. Crear proeycto en React
-2. Crear Componentes
-3. Crear Views
-4. Crear Routes
-5. Manejar formularios
-6. Manejar contentextos
-
-LISTADO DE HERRAMIENTAS UTLIZADAS PARA EL PROYECTO
-
-<!-- TODO uso forma nombrada en para exportar los componentes -->
-<!-- TODO agregar que cosas intale, las dependencias npm install y routes (react-router-dom)  -->
-<!-- TODO utilizacion de useEffect(nos permite diferenciar el orden de aparicion de contenido para que no rompa), UseState, fetching (un metodo que aparece en la plataforma web, nativa de javascript) -->
-<!-- TODO porque uso props children en Layout -->
-<!-- TODO: el uso de contexto -->
-<!-- TODO agregar los estilos adentro de la carpeta src, crear carpeta de styles para comeponentes y paginas y cada componente su .css -->
-<!-- TODO: UseNAvigate -->
-<!-- TODO: privateROUTES -->
-<!-- TODO: I install boostrap -->
-
-MEJORAS GENERALES
-1 - REVISAR ORTOGRAFIA Y CONSISTENCIA DE IDIOMA
-
-<!-- TODO doble validacion? required? and the set error set succes? -->
+Ask ChatGPT
