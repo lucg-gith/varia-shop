@@ -2,7 +2,7 @@ import "../styles/components/Footer.css";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="mt-5">
       <p style={{ color: "white" }}>
         Proyecto creado por
         {/* TODO STYLE: Add padding to the para  graph */}

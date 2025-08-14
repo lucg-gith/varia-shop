@@ -55,13 +55,12 @@ const Header = () => {
                       Dashboard
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-primary ms-2"
-                      onClick={logout}
-                    >
-                      End session
-                    </button>
+                  <li className="nav-item border rounded">
+                    <div className="nav-link">
+                      <button className="btn-reset " onClick={logout}>
+                        End session
+                      </button>
+                    </div>
                   </li>
                 </>
               ) : (

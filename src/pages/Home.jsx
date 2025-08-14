@@ -133,39 +133,51 @@ const Home = () => {
 
   return (
     <Layout>
-      <h1 className="text-center ">Bienvenido a VariaShop</h1>
-      <section className="container text-center mb-4 why-us">
-        <h2 className="h5 mb-3 text-center">Por qué elegirnos</h2>
+      <h1 className="text-center display-6 fw-semibold mb-4 theme-wine">
+        Bienvenido a VariaShop
+      </h1>
+
+      <section
+        className="theme-wine container text-center mb-5
+       why-us bg-body border border-2 rounded-4 shadow-sm p-4"
+      >
+        <h2 className="h5 mb-3 text-center ">Por qué elegirnos</h2>
         <div className="row g-3">
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="feature-card border border-primary border-2 rounded p-3 h-100">
-              <div className="fw-semibold mb-1">Envío rápido</div>
-              <p className="small text-muted mb-0">
+            <div className="feature-card border border-2 rounded p-3 h-100 bg-body">
+              <div className="fw-semibold mb-1 card-title">Envío rápido</div>
+              <p className="small text-muted mb-0 card-description">
                 Procesamos pedidos en 24hs
               </p>
             </div>
           </div>
 
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="feature-card border border-primary border-2 rounded p-3 h-100">
-              <div className="fw-semibold mb-1">Pagos seguros</div>
-              <p className="small text-muted mb-0">
+            <div className="feature-card border  border-2 rounded p-3 h-100 bg-body">
+              <div className="fw-semibold mb-1 card-title">Pagos seguros</div>
+              <p className="small text-muted mb-0 card-description">
                 Tus datos siempre protegidos
               </p>
             </div>
           </div>
 
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="feature-card border border-primary border-2 rounded p-3 h-100">
-              <div className="fw-semibold mb-1">Calidad garantizada</div>
-              <p className="small text-muted mb-0">Marcas seleccionadas.</p>
+            <div className="feature-card border  border-2 rounded p-3 h-100 bg-body">
+              <div className="fw-semibold mb-1 card-title">
+                Calidad garantizada
+              </div>
+              <p className="small text-muted mb-0 card-description">
+                Marcas seleccionadas.
+              </p>
             </div>
           </div>
 
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="feature-card border border-primary border-2 rounded p-3 h-100">
-              <div className="fw-semibold mb-1">Soporte 24/7</div>
-              <p className="small text-muted mb-0">Siempre disponibles.</p>
+            <div className="feature-card border  border-2 rounded p-3 h-100 bg-body">
+              <div className="fw-semibold mb-1 card-title">Soporte 24/7</div>
+              <p className="small text-muted mb-0 card-description">
+                Siempre disponibles.
+              </p>
             </div>
           </div>
         </div>
@@ -175,12 +187,12 @@ const Home = () => {
       {user && showPopUp && (
         <section className="container mb-4" style={{ padding: "20px 0 5px 0" }}>
           <div
-            className="card shadow-sm border-success rounded-4 p-4"
+            className="card shadow-sm border-success rounded-4 p-4 bg-body"
             style={{ maxWidth: "500px", margin: "auto" }}
           >
             <form onSubmit={handleUpdate}>
               <div className="mb-3">
-                <label className="form-label">Title</label>
+                <label className="fs-5 lh-lg form-label ">Title</label>
                 <input
                   type="text"
                   placeholder="Ingrese el titulo"
@@ -191,7 +203,7 @@ const Home = () => {
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Price</label>
+                <label className=" fs-5 lh-lg form-label ">Price</label>
                 <input
                   type="number"
                   placeholder="Ingrese el precio"
@@ -202,7 +214,7 @@ const Home = () => {
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Description</label>
+                <label className="fs-5 lh-lg form-label ">Description</label>
                 <textarea
                   value={descriptionEdit}
                   onChange={(e) => setDescriptionEdit(e.target.value)}
@@ -211,20 +223,20 @@ const Home = () => {
                 />
               </div>
 
-              <div className="mb-3">
+              <div className="mb-3 bg-body">
                 {/* TODO: incorporar select */}
-                <label className="form-label">Category</label>
+                <label className="fs-5 lh-lg form-label ">Category</label>
                 <input
                   type="text"
                   placeholder="Ingrese la categoria"
                   value={categoryEdit}
                   onChange={(e) => setCategoryEdit(e.target.value)}
-                  className="form-control form-control-lg"
+                  className="form-control form-control-m"
                 />
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Image</label>
+                <label className="fs-5 lh-lg form-label ">Image</label>
                 <input
                   type="text"
                   placeholder="Ingrese la URL de la imagen"
@@ -255,32 +267,42 @@ const Home = () => {
 
       {/* NOTAL ProductsListComponent */}
       {/* NOTA: grid de Bootstrap con cards para mostrar productos */}
-      <div className="container py-3 text-start">
+      <div
+        className="container py-3 text-start .theme-wine {
+  color: #7b1733;
+}"
+      >
         <div className="product-grid">
           {filteredProducts.map((product) => (
-            <div key={product.id} className="card h-100 shadow-sm">
+            <div
+              key={product.id}
+              className="card h-100 bg-white shadow-sm border border-primary border-opacity-25 rounded-4 card-hover"
+            >
               {/* NOTA: imagen con object-fit para mantener proporcion */}
               <img
                 src={product.image}
                 alt={product.title}
-                className="card-img-top p-3"
+                className="card-img-top p-3 bg-white"
                 style={{ height: "150px", objectFit: "contain" }}
               />
 
               <div className="product-title card-body d-flex flex-column">
-                <h6 className="card-title text-truncate" title={product.title}>
+                <h6
+                  className="card-title text-truncate fw-semibold"
+                  title={product.title}
+                >
                   {product.title}
                 </h6>
 
                 <p
-                  className="product-price h6 mb-1"
+                  className="product-price h6 mb-1 text-primary"
                   style={{ color: "#095373ff" }}
                 >
                   ${Number(product.price).toFixed(2)}
                 </p>
 
                 <p
-                  className="card-text text-muted small clamp clamp-5 text-start"
+                  className="card-text text-muted clamp clamp-5 text-start"
                   style={{
                     color: "#4A4A4A",
                   }}
@@ -289,7 +311,7 @@ const Home = () => {
                 </p>
 
                 <div
-                  className="product-category fw-semibold text-uppercase mb-3"
+                  className="product-category fw-semibold text-uppercase mb-3 text-primary"
                   style={{ color: "#095373ff" }}
                 >
                   {product.category}
@@ -299,14 +321,13 @@ const Home = () => {
                 {user && (
                   <div className="mt-auto d-flex gap-2">
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary btn-sm rounded-pill"
                       onClick={() => handleOpenEdit(product)}
                     >
                       Editar
                     </button>
                     <button
-                      className="btn btn-danger"
-                      style={{ color: "#095373ff" }}
+                      className="btn btn-danger btn-sm rounded-pill"
                       onClick={() => handleDelete(product.id)}
                     >
                       Eliminar

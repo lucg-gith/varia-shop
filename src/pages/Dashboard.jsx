@@ -26,7 +26,7 @@ const Dashboard = () => {
       return;
     }
 
-    // Validar URL solo si el campo no está vacío
+    // NOTA: Validar URL solo si el campo no está vacío
     if (image && !/^https?:\/\/.+\..+/.test(image)) {
       setError("La URL de la imagen no es válida");
       return;
@@ -65,7 +65,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <div className="container mt-5">
+      <div className="container ">
         <div
           className="card shadow-sm border-success rounded-4 p-4"
           style={{ maxWidth: "400px", margin: "auto" }}

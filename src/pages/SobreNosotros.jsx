@@ -9,8 +9,8 @@ const SobreNosotros = () => {
         </h1>
 
         <section className="mb-4 p-4 rounded-4 bg-body shadow-sm border border-success">
-          <h2 className="h5 px-3 py-1  mb-3">El proyecto</h2>
-          <p className="mb-0 text-muted">
+          <h2 className="h5 px-3 py-1 mb-3 card-title">El proyecto</h2>
+          <p className="mb-0 text-muted card-description">
             Varia Shop es una tienda online de prueba que ofrece un catálogo
             interactivo. El objetivo es demostrar una experiencia de usuario
             fluida y responsive, aplicando gestión de estado, hooks, routing
@@ -19,8 +19,10 @@ const SobreNosotros = () => {
         </section>
 
         <section className="mb-4 p-4 rounded-4 bg-body shadow-sm border border-success">
-          <h2 className="h5 px-3 py-1  mb-3">A quién está dirigido</h2>
-          <p className="mb-0 text-muted">
+          <h2 className="h5 px-3 py-1 mb-3 card-title">
+            A quién está dirigido
+          </h2>
+          <p className="mb-0 text-muted card-description">
             Este proyecto forma parte del Trabajo Final del curso Programador
             Web Inicial de la UTN 2025. Está pensado para la evaluación del
             docente, como referencia para otros estudiantes y como pieza de
@@ -29,11 +31,11 @@ const SobreNosotros = () => {
         </section>
 
         <section className="mb-4 p-4 rounded-4 bg-body shadow-sm border border-success">
-          <h2 className="h5 px-3 py-1 mb-3">
+          <h2 className="h5 px-3 py-1 mb-3 card-title">
             Qué tecnologías o enfoques se usaron
           </h2>
 
-          <ul>
+          <ul className="card-description">
             <li>
               <strong>Entorno de desarrollo:</strong> Visual Studio Code
             </li>
@@ -45,7 +47,7 @@ const SobreNosotros = () => {
               privadas)
             </li>
             <li>
-              <strong>Compilación y empaquetado:</strong> Vite
+              <strong>Compilación:</strong> Vite
             </li>
             <li>
               <strong>Estilos:</strong> Bootstrap, CSS con media queries para
