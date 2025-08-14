@@ -1,4 +1,4 @@
-import "../styles/components/SearchBar.css";
+import "../styles/components/searchBar.css";
 const SearchBar = ({ value, onChange }) => {
   return (
     <section>
