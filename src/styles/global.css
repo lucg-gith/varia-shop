@@ -1,11 +1,36 @@
-/* 
-Azul Grisáceo: #6B7A8F (Color principal suave)
-Rojo Suave: #D9534F (Para notificaciones o alertas sutiles)
-Texto Principal: #333333 (Un negro no tan intenso)
-Fondo/Espacio en Blanco: #F7F7F7 (Un blanco ligeramente cálido)
-Detalles en Azul Claro: #A2B5CD (Para bordes o fondos secundarios) */
+/* Paleta propia */
+:root {
+  --vs-offwhite: #f9f6ec;
+  --vs-steel:    #88a1a8;
+  --vs-plum:     #502940;  
+  --vs-wine:     #790614;  
+  --vs-ink:      #0d0c0c; 
 
-/* NOTA: *:before, *:after  */
+
+  --vs-green:    #3E7C59;  
+}
+
+/* Re-root de Bootstrap */
+:root,
+[data-bs-theme="light"] {
+  --bs-primary:      var(--vs-plum);
+  --bs-secondary:    var(--vs-steel);
+  --bs-danger:       var(--vs-wine);
+  --bs-dark:         var(--vs-ink);
+  --bs-success:      var(--vs-green);             
+  --bs-success-rgb:  62, 124, 89;                  
+  --bs-body-bg:      var(--vs-offwhite);
+  --bs-body-color:   var(--vs-ink);
+  --bs-link-color:   var(--vs-plum);
+  --bs-border-color: #b8c6ca; /
+}
+
+/* suaves */
+.bg-success-subtle-custom {
+  background: color-mix(in oklab, var(--vs-green) 16%, white) !important;
+}
+.text-green   { color: var(--vs-green) !important; }
+.border-green { border-color: var(--vs-green) !important; }
 
 * {
   box-sizing: border-box;
@@ -42,3 +67,6 @@ img {
   padding: 3px;
   border-radius: 5px;
 }
+
+.theme-wine {
+  color: #7B1733}

@@ -24,9 +24,12 @@ const Login = () => {
     // NOTA al profe: aca use trim porque me generaba error cuando copiaba
     // con espacios el user me parecio practico para no tener tanto ese error.
   };
+
+  // NOTA: recordar que el useeffect es una arrow fuction sin aprametros
   useEffect(() => {
     user && navigate("/");
   }, [user]);
+
   return (
     <Layout>
       <p className=" text-decoration-underline user-card p-3  bg-body rounded-top-3 mb-0 text-center">

@@ -17,7 +17,7 @@ const Header = () => {
       <nav className="navbar navbar-expand-sm navbar-light bg-light fixed-top">
         <div className="container">
           {/* NOTA: Logo */}
-          <Link className="navbar-brand" to="/">
+          <Link className=" logo-xsnavbar-brand" to="/">
             <img src={logo} alt="Logo" />
           </Link>
 
