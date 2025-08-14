@@ -1,7 +1,7 @@
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/UserContext";
-import "../styles/components/Header.css";
+import "../styles/components/header.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
