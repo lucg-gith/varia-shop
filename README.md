@@ -26,7 +26,5 @@ Dependencias y recursos requeridos:
 -Credenciales de prueba:
 User: johnd Password: m38rmF$
 
-<!-- NOTA AL PROFE
+<!-- NOTA AL PROFESOR:
 En este proyecto pude fijar en la práctica varios conceptos que vos remarcabas en clase. Lo que más me costó fue la barra de búsqueda filtrando en memoria y reencaminar los colores de Bootstrap a mi paleta, pero lo resolví con práctica y pruebas. Usé inteligencia artificial lo menos posible y, cuando la usé, siempre le pedí explicaciones y ejemplos para entender el porqué de cada paso. También busqué soluciones en foros y en videos de YouTube para desbloquearme con errores puntuales. Todo esto me ayudó a ordenar el manejo de estado, mejorar el enrutado con React Router y pulir la experiencia visual con utilidades de Bootstrap. Siento que el resultado quedó simple y consistente, y refleja mi proceso de aprendizaje y todo lo que me queda por practicar! -->
-
-Ask ChatGPT
